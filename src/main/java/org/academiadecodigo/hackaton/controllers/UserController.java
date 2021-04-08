@@ -109,7 +109,7 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(uriComponents.toUri());
 
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedUser.getId(), HttpStatus.CREATED);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/message", })
