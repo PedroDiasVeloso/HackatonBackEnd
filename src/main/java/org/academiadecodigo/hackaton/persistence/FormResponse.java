@@ -4,40 +4,40 @@ package org.academiadecodigo.hackaton.persistence;
 public class FormResponse {
 
 
-    private Integer firstQuestion;
-    private Integer secondQuestion;
-    private Integer thirdQuestion;
-    private Integer fourthQuestion;
+    private String firstQuestion;
+    private String secondQuestion;
+    private String thirdQuestion;
+    private String fourthQuestion;
 
-    public Integer getFirstQuestion() {
+    public String getFirstQuestion() {
         return firstQuestion;
     }
 
-    public void setFirstQuestion(Integer firstQuestion) {
+    public void setFirstQuestion(String firstQuestion) {
         this.firstQuestion = firstQuestion;
     }
 
-    public Integer getSecondQuestion() {
+    public String getSecondQuestion() {
         return secondQuestion;
     }
 
-    public void setSecondQuestion(Integer secondQuestion) {
+    public void setSecondQuestion(String secondQuestion) {
         this.secondQuestion = secondQuestion;
     }
 
-    public Integer getThirdQuestion() {
+    public String getThirdQuestion() {
         return thirdQuestion;
     }
 
-    public void setThirdQuestion(Integer thirdQuestion) {
+    public void setThirdQuestion(String thirdQuestion) {
         this.thirdQuestion = thirdQuestion;
     }
 
-    public Integer getFourthQuestion() {
+    public String getFourthQuestion() {
         return fourthQuestion;
     }
 
-    public void setFourthQuestion(Integer fourthQuestion) {
+    public void setFourthQuestion(String fourthQuestion) {
         this.fourthQuestion = fourthQuestion;
     }
 }

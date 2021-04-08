@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 public class FormServiceImpl {
 
 
-    public Integer calculateRank(Integer one, Integer two, Integer three, Integer four){
+    public Integer calculateRank(String one, String two, String three, String four){
 
-        return one + two + three + four;
+        return Integer.parseInt(one) + Integer.parseInt(two) + Integer.parseInt(three) + Integer.parseInt(four);
     }
 }
