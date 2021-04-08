@@ -150,7 +150,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/formResponse/{id}"})
-    public ResponseEntity<?> getAnswers(@RequestBody FormResponse formResponse, @PathVariable Integer id){
+    public ResponseEntity<Integer> getAnswers(@RequestBody FormResponse formResponse, @PathVariable Integer id){
 
         Integer result = formService.calculateRank(formResponse.getFirstQuestion(),formResponse.getSecondQuestion(),
                 formResponse.getThirdQuestion(),formResponse.getFourthQuestion());
@@ -158,7 +158,7 @@ public class UserController {
         userService.getMember(id).setRank(result);
 
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
 
