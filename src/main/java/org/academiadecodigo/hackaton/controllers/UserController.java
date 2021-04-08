@@ -6,8 +6,9 @@ import org.academiadecodigo.hackaton.dto.LoginDto;
 import org.academiadecodigo.hackaton.dto.MessageDto;
 import org.academiadecodigo.hackaton.dto.UserDto;
 import org.academiadecodigo.hackaton.persistence.Database;
+import org.academiadecodigo.hackaton.persistence.FormResponse;
 import org.academiadecodigo.hackaton.persistence.Member;
-import org.academiadecodigo.hackaton.persistence.User;
+import org.academiadecodigo.hackaton.services.FormServiceImpl;
 import org.academiadecodigo.hackaton.services.MessagingServerImpl;
 import org.academiadecodigo.hackaton.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -30,6 +29,7 @@ public class UserController {
 
     private MessagingServerImpl messagingServer;
     private UserServiceImpl userService;
+    private FormServiceImpl formService;
     private UserDtoToUser userDtoToUser;
     private UserToUserDto userToUserDto;
     private Database database;
@@ -60,6 +60,10 @@ public class UserController {
         this.userToUserDto = userToUserDto;
     }
 
+    @Autowired
+    public void setFormService(FormServiceImpl formService) {
+        this.formService = formService;
+    }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/{id}", })
     public ResponseEntity<UserDto> showUser(@PathVariable Integer id) {
@@ -144,8 +148,19 @@ public class UserController {
 
     }
 
+    @RequestMapping(method = RequestMethod.POST, path = {"/formResponse/{id}"})
+    public ResponseEntity<?> getAnswers(@RequestBody FormResponse formResponse, @PathVariable Integer id){
 
 
+
+        Integer result = formService.calculateRank(formResponse.getFirstQuestion(),formResponse.getSecondQuestion(),
+                formResponse.getThirdQuestion(),formResponse.getFourthQuestion());
+
+        userService.getMember(id).setRank(result);
+
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 
 
