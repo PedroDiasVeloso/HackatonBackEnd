@@ -23,6 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.Valid;
 import java.util.Collection;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class UserController {
@@ -150,8 +151,6 @@ public class UserController {
 
     @RequestMapping(method = RequestMethod.POST, path = {"/formResponse/{id}"})
     public ResponseEntity<?> getAnswers(@RequestBody FormResponse formResponse, @PathVariable Integer id){
-
-
 
         Integer result = formService.calculateRank(formResponse.getFirstQuestion(),formResponse.getSecondQuestion(),
                 formResponse.getThirdQuestion(),formResponse.getFourthQuestion());
