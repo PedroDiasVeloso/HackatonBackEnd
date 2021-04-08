@@ -141,7 +141,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = {"/users", })
-    public ResponseEntity<Collection<Member>> listUsers(@Valid @RequestBody UserDto userDto) {
+    public ResponseEntity<Collection<Member>> listUsers() {
 
         Collection<Member> list = database.getMembers();
 
