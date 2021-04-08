@@ -29,8 +29,6 @@ public class UserDto {
 
     private Integer age;
 
-    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",
-            message = "Password contains invalid characters")
     @NotNull(message = "Password is mandatory")
     @NotBlank(message = "Password is mandatory")
     private String password;
