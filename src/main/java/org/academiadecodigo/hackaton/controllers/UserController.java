@@ -112,8 +112,9 @@ public class UserController {
         return new ResponseEntity<>(savedUser.getId(), HttpStatus.CREATED);
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = {"/message", })
-    public ResponseEntity<?> sendMessage(@Valid @RequestBody MessageDto messageDto, BindingResult bindingResult) {
+    @RequestMapping(method = RequestMethod.POST, path = {"/message/{id}", })
+    public ResponseEntity<?> sendMessage(@Valid @RequestBody MessageDto messageDto, BindingResult bindingResult,
+                                         @PathVariable Integer id) {
 
         if(bindingResult.hasErrors()){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -121,7 +122,8 @@ public class UserController {
 
         Member member = userService.getMemberByUsername(messageDto.getUsername());
 
-        messagingServer.sendMessage(member,messageDto.getMessage());
+        String theMessage = userService.getMember(id).getFirstName() + ": " + messageDto.getMessage();
+        messagingServer.sendMessage(member,theMessage);
 
         return new ResponseEntity<>(HttpStatus.OK);
 
@@ -160,6 +162,14 @@ public class UserController {
 
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.GET, path = {"/logout"})
+    public ResponseEntity<?> logout(){
+        
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 
