@@ -155,22 +155,14 @@ public class UserController {
     public ResponseEntity<Integer> getAnswers(@RequestBody FormResponse formResponse, @PathVariable Integer id){
 
         Integer result = formService.calculateRank(formResponse.getFirstQuestion(),formResponse.getSecondQuestion(),
-                formResponse.getThirdQuestion(),formResponse.getFourthQuestion());
+                formResponse.getThirdQuestion(),formResponse.getFourthQuestion(),formResponse.getFifthQuestion(),
+                formResponse.getSixthQuestion(),formResponse.getSeventhQuestion(),formResponse.getEightQuestion());
 
         userService.getMember(id).setRank(result);
 
 
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
-
-    @RequestMapping(method = RequestMethod.POST, path = {"/logout"})
-    public ResponseEntity<?> logout(){
-        
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-
-
 
 
 }

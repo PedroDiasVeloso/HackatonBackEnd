@@ -8,6 +8,42 @@ public class FormResponse {
     private String secondQuestion;
     private String thirdQuestion;
     private String fourthQuestion;
+    private String fifthQuestion;
+    private String sixthQuestion;
+    private String seventhQuestion;
+    private String eightQuestion;
+
+    public String getFifthQuestion() {
+        return fifthQuestion;
+    }
+
+    public void setFifthQuestion(String fifthQuestion) {
+        this.fifthQuestion = fifthQuestion;
+    }
+
+    public String getSixthQuestion() {
+        return sixthQuestion;
+    }
+
+    public void setSixthQuestion(String sixthQuestion) {
+        this.sixthQuestion = sixthQuestion;
+    }
+
+    public String getSeventhQuestion() {
+        return seventhQuestion;
+    }
+
+    public void setSeventhQuestion(String seventhQuestion) {
+        this.seventhQuestion = seventhQuestion;
+    }
+
+    public String getEightQuestion() {
+        return eightQuestion;
+    }
+
+    public void setEightQuestion(String eightQuestion) {
+        this.eightQuestion = eightQuestion;
+    }
 
     public String getFirstQuestion() {
         return firstQuestion;
