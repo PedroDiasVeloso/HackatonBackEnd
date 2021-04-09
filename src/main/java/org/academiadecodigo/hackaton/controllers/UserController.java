@@ -122,7 +122,7 @@ public class UserController {
 
         Member member = userService.getMemberByUsername(messageDto.getUsername());
 
-        String theMessage = userService.getMember(id).getFirstName() + ": " + messageDto.getMessage();
+        String theMessage = userService.getMember(id).getUsername() + ": " + messageDto.getMessage();
         messagingServer.sendMessage(member,theMessage);
 
         return new ResponseEntity<>(HttpStatus.OK);
