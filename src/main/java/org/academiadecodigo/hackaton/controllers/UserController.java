@@ -163,7 +163,7 @@ public class UserController {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path = {"/logout"})
+    @RequestMapping(method = RequestMethod.POST, path = {"/logout"})
     public ResponseEntity<?> logout(){
         
         return new ResponseEntity<>(HttpStatus.OK);
