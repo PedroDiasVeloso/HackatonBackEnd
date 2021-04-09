@@ -81,7 +81,7 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = {"/login", })
-    public ResponseEntity<Member> validateUser(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<Integer> validateUser(@RequestBody LoginDto loginDto) {
 
         if(!database.validateLogin(loginDto.getUsername(), loginDto.getPassword())){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -89,7 +89,7 @@ public class UserController {
 
         Member member = userService.getMemberByUsername(loginDto.getUsername());
 
-        return new ResponseEntity<>(member,HttpStatus.OK);
+        return new ResponseEntity<>(member.getId(),HttpStatus.OK);
 
     }
 
